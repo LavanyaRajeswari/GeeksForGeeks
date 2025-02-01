@@ -7,7 +7,7 @@ using namespace std;
 class Solution {
   public:
     // bool ans = false;
-    bool Poss(string word, int i, int j, int n, int m,int ind,vector<vector<char>>&mat) {
+    bool Poss(string &word, int i, int j, int n, int m,int ind,vector<vector<char>>&mat) {
         if(ind == word.length()) {
             return true;
         }
