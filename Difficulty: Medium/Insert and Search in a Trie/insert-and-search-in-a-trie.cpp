@@ -56,34 +56,30 @@ struct TrieNode {
 class Solution
 {
     public:
-    //Function to insert string into TRIE.
-    void insert(struct TrieNode *root, string key)
-    {
-        // code here
-        if (root == NULL) root = new TrieNode();
-        TrieNode *temp = root;
-        for (int i=0; i<key.size(); i++){
-            if (temp->children[key[i]-'a'] == NULL){
-                temp->children[key[i]-'a'] = new TrieNode();
+        void insert(struct TrieNode *root, string key)
+        {
+            TrieNode* temp = root;
+            for(int i = 0 ;i < key.length(); i++) {
+                if(temp->children[key[i]-'a'] == NULL) {
+                    temp->children[key[i]-'a'] = new TrieNode();
+                }
+                temp = temp->children[key[i]-'a'];
             }
-            temp = temp->children[key[i]-'a'];
+            temp->isLeaf = true;
         }
-        temp->isLeaf = true;
-    }
-    
-    //Function to use TRIE data structure and search the given string.
-    bool search(struct TrieNode *root, string key) 
-    {
-        // code here
-        if (root == NULL) return false;
-        TrieNode *temp = root;
-        for (int i=0; i<key.size(); i++){
-            if (temp->children[key[i]-'a'] == NULL)
-                return false;
-            temp = temp->children[key[i]-'a'];
+        
+        bool search(struct TrieNode *root, string key) 
+        {
+            if(root == NULL) return false;
+            TrieNode* temp = root;
+            for(int i = 0 ;i < key.length(); i++) {
+                if(temp->children[key[i]-'a'] == NULL) {
+                    return false;
+                }
+                temp = temp->children[key[i]-'a'];
+            }
+            return temp->isLeaf;
         }
-        return temp->isLeaf;
-    }
 };
 
 
