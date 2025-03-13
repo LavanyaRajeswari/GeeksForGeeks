@@ -4,6 +4,7 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 class Solution {
   public:
     int rec(vector<int> &wt, vector<int> &val, int cap,int i, int n,vector<vector<int>>&dp) {
@@ -18,13 +19,15 @@ class Solution {
         r = rec(wt,val,cap,i+1,n,dp);
         return dp[i][cap] = max(l,r);
     }
-    int knapSack(int capacity, vector<int> &val, vector<int> &wt) {
+    int knapsack(int capacity, vector<int> &val, vector<int> &wt) {
         int n = val.size();
         vector<vector<int>>dp(n,vector<int>(capacity+1, -1));
         int ans = rec(wt,val,capacity,0,n,dp);
         return ans;
     }
 };
+
+
 
 
 //{ Driver Code Starts.
@@ -64,7 +67,7 @@ int main() {
         }
 
         Solution solution;
-        cout << solution.knapSack(capacity, values, weights) << endl;
+        cout << solution.knapsack(capacity, values, weights) << endl;
         cout << "~" << endl;
     }
     return 0;
