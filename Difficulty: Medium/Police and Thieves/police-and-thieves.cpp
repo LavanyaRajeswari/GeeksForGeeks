@@ -5,7 +5,6 @@ class Solution {
         int i = 0, j = 0, ans = 0;
         int t = 0, p = 0;
         while(j < n) {
-            // cout << i << " " << j << endl;
             if(j-i > k) {
                 i++;
                 while(arr[i] == '$' and i <= j) i++;
